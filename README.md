@@ -13,6 +13,24 @@ npm run preview    # serve the production build locally
 npm run lint
 ```
 
+## Deploy to Vercel
+
+The project is configured for Vercel through `vercel.json` (Vite framework, `npm ci`, `npm run build`, output `dist/`,
+cache headers for hashed assets and images, and basic security headers). Node 20.19 or newer is required and declared in `package.json`.
+
+1. Push the repository to GitHub (already done for this branch).
+2. In Vercel, choose **Add New > Project**, import the GitHub repository, and keep the detected settings:
+   - Framework Preset: **Vite**
+   - Build Command: `npm run build`
+   - Output Directory: `dist`
+3. Under **Settings > Environment Variables**, add `VITE_FORM_ENDPOINT` (Production and Preview) with your form endpoint URL.
+   Vite inlines `VITE_` variables at build time, so **redeploy** after adding or changing it.
+4. Deploy. Vercel gives you a `*.vercel.app` URL, and every push to a branch creates a preview deployment.
+5. When the domain is ready, add it under **Settings > Domains**, then update `site.url` in `src/config/site.ts`
+   and the `canonical`, `og:url`, and `og:image` URLs in `index.html`. They currently point to `https://www.example.com`.
+
+Before going live, complete the placeholder checklist above so no bracketed placeholders appear on the public site.
+
 ## Before launch: replace the placeholders
 
 Company details live in one file, `src/config/site.ts`. Anything still wrapped in square brackets
