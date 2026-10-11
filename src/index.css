@@ -1,0 +1,91 @@
+@import '@fontsource-variable/plus-jakarta-sans';
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --color-navy-950: #071428;
+  --color-navy-900: #0b1f3a;
+  --color-navy-800: #112b4f;
+  --color-navy-700: #1c3d66;
+  --color-navy-600: #35557e;
+  --color-navy-500: #5a7396;
+  --color-navy-400: #8497b3;
+
+  --color-brand-600: #1d5fb8;
+  --color-brand-700: #184e99;
+  --color-brand-500: #2f74d0;
+
+  --color-ice-50: #f5fbfe;
+  --color-ice-100: #e9f5fb;
+  --color-ice-200: #d3eaf6;
+  --color-ice-300: #b2dbef;
+  --color-ice-400: #8ccae6;
+
+  --color-mist-50: #f7f9fb;
+  --color-mist-100: #eef2f6;
+  --color-mist-200: #e1e7ee;
+  --color-mist-300: #cbd4df;
+  --color-mist-500: #6b7787;
+  --color-mist-600: #515d6e;
+
+  --radius-card: 1rem;
+  --radius-control: 0.625rem;
+
+  --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+  --shadow-soft: 0 1px 2px rgb(11 31 58 / 0.04), 0 8px 24px -12px rgb(11 31 58 / 0.12);
+  --shadow-lift: 0 2px 4px rgb(11 31 58 / 0.05), 0 18px 36px -16px rgb(11 31 58 / 0.28);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-white font-sans text-navy-900 antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  img,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand-500);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+
+  ::selection {
+    background: var(--color-ice-300);
+    color: var(--color-navy-900);
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply inline-flex items-center gap-3 text-[0.72rem] font-semibold tracking-[0.18em] uppercase text-brand-600;
+  }
+
+  .section-title {
+    @apply text-3xl leading-[1.12] font-bold tracking-tight text-navy-900 sm:text-4xl lg:text-[2.75rem];
+  }
+
+  .section-lead {
+    @apply text-base leading-relaxed text-mist-500 sm:text-lg;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
